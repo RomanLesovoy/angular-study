@@ -1,12 +1,14 @@
-import { SocialUser, GoogleSigninButtonModule, SocialAuthService } from '@abacritt/angularx-social-login';
+import { SocialUser, GoogleSigninButtonModule } from '@abacritt/angularx-social-login';
 import { Component } from '@angular/core';
 import { DialogModalComponent } from '../shared/dialog-modal/dialog-modal.component';
 import { CommonModule } from '@angular/common';
+import { AuthService } from '../services/auth.service';
+import { NavComponent } from "../nav/nav.component";
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule, GoogleSigninButtonModule, DialogModalComponent],
+  imports: [CommonModule, GoogleSigninButtonModule, DialogModalComponent, NavComponent],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
@@ -15,9 +17,7 @@ export class HeaderComponent {
   loggedIn: boolean = false;
   modalRef: DialogModalComponent | null = null;
 
-  constructor (private authService: SocialAuthService) {
-
-  }
+  constructor (protected authService: AuthService) {}
 
   signOut() {
     this.authService.signOut();
@@ -32,8 +32,7 @@ export class HeaderComponent {
   }
 
   ngOnInit() {
-    this.authService.authState.subscribe((user) => {
-      console.log(user)
+    this.authService.user.subscribe((user) => {
       this.user = user;
       this.loggedIn = !!user;
     });

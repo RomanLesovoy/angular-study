@@ -1,0 +1,13 @@
+<nav>
+  <a routerLink="/">
+    <button [class]="isActive('/') ? 'primary' : 'secondary'">
+      Home
+    </button>
+  </a>
+  
+  <a routerLink="/game">
+    <button [class]="isActive('/game') ? 'primary' : 'secondary'">
+      Game
+    </button>
+  </a>
+</nav>
