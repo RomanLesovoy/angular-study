@@ -1,0 +1,53 @@
+dialog {
+    width: 600px;
+    min-height: 400px;
+    background-color: black;
+    color: white;
+    outline: none;
+    padding: 0;
+    position: relative;
+
+    border-image: linear-gradient(to right, rgba(35, 35, 35, 0.783) 0%, rgba(134, 133, 133, 0.486) 100%) 1;
+    border-width: 5px;
+    border-style: solid;
+
+    section.dialog-content {
+        padding: 15px;
+    }
+    
+    h2 {
+        text-align: center;
+        margin-bottom: 30px;
+        margin-top: 0;
+        background-color: rgba(40, 40, 40, 0.642);
+        padding: 15px;
+    }
+
+    .close-icon {
+        position: absolute;
+        right: 15px;
+        top: 8px;
+        cursor: pointer;
+        background-color: black;
+        width: 30px;
+        height: 30px;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        
+        &::before {
+            content: 'x';
+            position: absolute;
+            top: 2px;
+            left: 10px;
+            font-size: 22px;
+            color: gray;
+        }
+    }
+}
+
+dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.7);
+}

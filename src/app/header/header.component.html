@@ -1,0 +1,31 @@
+<section class="header">
+
+  <app-nav *ngIf="!!user"></app-nav>
+
+  <app-dialog-modal [openedProp]="!loggedIn" [setModalRef]="this.setModalRef" [titleProp]="'Authorization'">
+    <h4>To access pages pass authorization</h4>
+
+    <asl-google-signin-button
+      type="standard"
+      shape="pill"
+      theme="filled_blue"
+      text="signin_with"
+      size="large"
+      logo_alignment="left"
+      class="login-button"
+      >
+    </asl-google-signin-button>
+    
+  </app-dialog-modal>
+
+  <section class="user-info" *ngIf="!!user">
+    <img [src]="user.photoUrl" referrerpolicy="no-referrer">
+    <p>{{ user.email }}</p>
+    <button class="button-logout" (click)="authService.signOut()">Logout</button>
+  </section>
+
+  <section class="actions" *ngIf="!user">
+    <button class="button-login" *ngIf="!loggedIn" (click)="openModal()">Login</button>
+  </section>
+
+</section>

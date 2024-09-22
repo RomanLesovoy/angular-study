@@ -1,0 +1,7 @@
+<dialog type="modal" id="dialog" #dialog>
+    <p class="close-icon" (click)="this.closeModal()"></p>
+    <h2 *ngIf="{ titleProp }">{{ titleProp }}</h2>
+    <section class="dialog-content">
+        <ng-content></ng-content>
+    </section>
+</dialog>
