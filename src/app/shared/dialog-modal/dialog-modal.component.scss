@@ -26,7 +26,7 @@ dialog {
     .close-icon {
         position: absolute;
         right: 15px;
-        top: -2px;
+        top: 8px;
         cursor: pointer;
         background-color: black;
         width: 30px;
@@ -40,10 +40,14 @@ dialog {
         &::before {
             content: 'x';
             position: absolute;
-            top: 0px;
+            top: 2px;
             left: 10px;
             font-size: 22px;
             color: gray;
         }
     }
+}
+
+dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.7);
 }
