@@ -1,0 +1,19 @@
+section.header {
+  position: relative;
+  width: 100%;
+  height: 100px;
+  background-color: rgba(0, 0, 0, 0.9);
+  border-bottom: 1px solid gray;
+}
+
+h4 {
+  margin-top: 0;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.login-button {
+  position: absolute;
+  bottom: 30px;
+  width: calc(100% - 40px);
+}

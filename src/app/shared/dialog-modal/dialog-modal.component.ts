@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, ViewChild, ElementRef, SimpleChanges, AfterViewInit } from '@angular/core';
+import { Component, Input, ViewChild, ElementRef, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-dialog-modal',
@@ -13,7 +13,13 @@ export class DialogModalComponent {
 
   @Input() titleProp!: string;
   @Input() openedProp!: boolean;
+  @Input() setModalRef: Function = (ref: DialogModalComponent): void => {};
   @ViewChild('dialog') dialog!: ElementRef<HTMLDialogElement>;
+
+  ngOnInit() {
+    console.log(this.setModalRef, this)
+    this.setModalRef(this);
+  }
 
   private showHide() {
     !!this.openedProp ? this.openModal() : this.closeModal();
