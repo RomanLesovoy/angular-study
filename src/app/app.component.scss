@@ -1,0 +1,16 @@
+body {
+  min-height: 100vh;
+  background-color: black;
+  color: white;
+  
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  letter-spacing: 2px;
+
+  h2, h1, h3 {
+    text-transform: uppercase;
+  }
+
+  h1, h2, h3, span, p {
+    color: white;
+  }
+}
