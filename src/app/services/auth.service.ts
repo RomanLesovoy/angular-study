@@ -17,6 +17,7 @@ export class AuthService {
       const user = _user || this.getStorageUser();
       this.user.next(user);
       this.loggedIn = !!user;
+      user && this.saveUser(user);
     });
   }
 
