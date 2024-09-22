@@ -9,33 +9,32 @@ import { Component, Input, ViewChild, ElementRef, SimpleChanges } from '@angular
   styleUrl: './dialog-modal.component.scss'
 })
 export class DialogModalComponent {
-  private openedClassName = 'opened';
-
   @Input() titleProp!: string;
   @Input() openedProp!: boolean;
   @Input() setModalRef: Function = (ref: DialogModalComponent): void => {};
   @ViewChild('dialog') dialog!: ElementRef<HTMLDialogElement>;
 
-  ngOnInit() {
-    console.log(this.setModalRef, this)
+  public get openedClassName() { return 'opened' };
+
+  ngOnInit(): void {
     this.setModalRef(this);
   }
 
-  private showHide() {
+  private showHide(): void {
     !!this.openedProp ? this.openModal() : this.closeModal();
   }
 
-  closeModal() {
+  closeModal(): void {
     this.dialog.nativeElement.close();
     this.dialog.nativeElement.classList.remove(this.openedClassName);
   }
 
-  openModal() {
+  openModal(): void {
     this.dialog.nativeElement.showModal();
     this.dialog.nativeElement.classList.add(this.openedClassName);
   }
 
-  ngOnChanges(changes: SimpleChanges) {
+  ngOnChanges(changes: SimpleChanges): void {
     const openedValue = changes['openedProp'];
     if (openedValue.previousValue !== openedValue.currentValue && this.dialog) {
       this.showHide();

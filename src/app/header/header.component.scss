@@ -4,6 +4,8 @@ section.header {
   height: 100px;
   background-color: rgba(0, 0, 0, 0.9);
   border-bottom: 1px solid gray;
+  display: flex;
+  justify-content: space-between;
 }
 
 h4 {
@@ -16,4 +18,31 @@ h4 {
   position: absolute;
   bottom: 30px;
   width: calc(100% - 40px);
+}
+
+button.button-login, button.button-logout {
+  background-color: rgba(128, 0, 128, 0.886);
+  border: none;
+  color: white;
+  padding: 12px;
+  cursor: pointer;
+  font-weight: bold;
+
+  &:hover {
+    opacity: 0.85;
+  }
+}
+
+section.user-info, section.actions {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+
+  * {
+    margin-left: 10px;
+  }
+
+  img {
+    width: 40px;
+  }
 }
