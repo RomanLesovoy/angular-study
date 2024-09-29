@@ -33,15 +33,15 @@ export type FieldValue = string | Array<Option>;
   template: '',
 })
 export class InputShared implements OnInit {
-  @Input() label?: string = '';
-  @Input() name: string = '';
-  @Input() type: InputType = InputType.Text;
-  @Input() valueProp: string = '';
-  @Input() validations: Array<ValidatorFn> = [];
+  @Input() name!: string;
+  @Input() type!: InputType;
+  @Input() validations!: Array<ValidatorFn>;
+  @Input() label?: string | undefined = '';
+  @Input() valueProp?: string | undefined = '';
   @Input() formGroup?: FormGroup;
   @Output() onChangeEvent = new EventEmitter<FieldValue>();
 
-  public control: FormControl;
+  public control!: FormControl;
 
   constructor() {
     this.control = new FormControl(this.name, []);

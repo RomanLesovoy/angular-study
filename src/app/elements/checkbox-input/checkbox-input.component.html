@@ -14,9 +14,5 @@
     <br/>
   }
 
-  <div *ngIf="control.invalid && control.touched">
-    <div *ngIf="control.errors?.['required']">
-     Required field
-    </div>
-  </div>
+  <app-control-error [control]="control"></app-control-error>
 </fieldset>

@@ -8,15 +8,5 @@
     [attr.placeholder]="label"
   />
   
-  <div *ngIf="control.invalid && control.touched">
-    <div *ngIf="control.errors?.['required']">
-     Required field
-    </div>
-    <div *ngIf="control.errors?.['minlength']">
-      Min length {{ control.errors?.['minlength'].requiredLength }}
-     </div>
-     <div *ngIf="control.errors?.['maxlength']">
-      Max length {{ control.errors?.['maxlength'].requiredLength }}
-     </div>
-  </div>
+  <app-control-error [control]="control"></app-control-error>
 </fieldset>

@@ -10,7 +10,7 @@ import { IInputProps, InputType } from '../shared/Input.shared';
 export class FormBuilderComponent implements OnInit {
   public form: FormGroup = null as unknown as FormGroup;
   public enumType: typeof InputType = InputType;
-  @Input() elements: Array<IInputProps> = [];
+  @Input() elements!: Array<IInputProps>;
 
   constructor(private formBuilder: FormBuilder) {}
 
