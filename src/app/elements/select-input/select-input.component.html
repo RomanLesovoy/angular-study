@@ -1,0 +1,19 @@
+<fieldset>
+  <label *ngIf="label">{{ label }}</label><br />
+  <select
+    [value]="value"
+    class="form-control"
+    [formControl]="control"
+    [attr.placeholder]="label"
+  >
+    @for(option of options; track option.key) {
+      <option [value]="option.value">{{ option.label || option.value }}</option>
+    }
+  </select>
+  
+  <div *ngIf="control.invalid && control.touched">
+    <div *ngIf="control.errors?.['required']">
+     Required field
+    </div>
+  </div>
+</fieldset>

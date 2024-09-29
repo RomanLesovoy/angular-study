@@ -1,0 +1,43 @@
+<form [formGroup]="form" *ngIf="elements.length">
+    @for (elem of elements; track elem.name) {
+      @switch (elem.type) {
+          @case (enumType.Text) {
+            <app-text-input
+              [label]="elem.label"
+              [name]="elem.name"
+              [valueProp]="elem.valueProp"
+              [type]="elem.type"
+              (onChangeEvent)="elem.onChange"
+              [validations]="elem.validations || []"
+              [formGroup]="this.form"
+            ></app-text-input>
+          }
+          @case (enumType.Select) {
+            <app-select-input
+              [label]="elem.label"
+              [name]="elem.name"
+              [valueProp]="elem.valueProp"
+              [type]="elem.type"
+              (onChangeEvent)="elem.onChange"
+              [validations]="elem.validations || []"
+              [formGroup]="this.form"
+              [options]="elem.options || []"
+            ></app-select-input>
+          }
+          @default {
+            <app-checkbox-input
+              [label]="elem.label"
+              [name]="elem.name"
+              [valueProp]="elem.valueProp"
+              [type]="elem.type"
+              (onChangeEvent)="elem.onChange"
+              [validations]="elem.validations || []"
+              [formGroup]="this.form"
+              [options]="elem.options || []"
+            ></app-checkbox-input>
+          }
+      }
+    }
+    
+    <button (click)="onSubmit()">Submit</button>
+</form>
