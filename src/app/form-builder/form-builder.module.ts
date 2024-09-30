@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ButtonModule } from 'primeng/button';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormBuilderComponent } from './form-builder.component';
 import { TextInputComponent } from "../elements/text-input/text-input.component";
@@ -13,6 +14,7 @@ import { CheckboxInputComponent } from "../elements/checkbox-input/checkbox-inpu
     TextInputComponent,
     ReactiveFormsModule,
     SelectInputComponent,
+    ButtonModule,
     CheckboxInputComponent,
   ],
   exports: [FormBuilderComponent]

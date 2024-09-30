@@ -1,6 +1,7 @@
-<fieldset>
-  <label *ngIf="label">{{ label }}</label><br />
+<p-fieldset [legend]="label">
+
   <select
+    pInputText
     [value]="value"
     class="form-control"
     [formControl]="control"
@@ -12,4 +13,4 @@
   </select>
   
   <app-control-error [control]="control"></app-control-error>
-</fieldset>
+</p-fieldset>

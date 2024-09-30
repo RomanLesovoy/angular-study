@@ -2,12 +2,13 @@ import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { InputShared, InputType, Option } from '../../shared/Input.shared';
+import { FieldsetModule } from 'primeng/fieldset';
 import { ControlErrorComponent } from "../../shared/control-error/control-error.component";
 
 @Component({
   selector: 'app-checkbox-input',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, FormsModule, ControlErrorComponent],
+  imports: [CommonModule, FieldsetModule, ReactiveFormsModule, FormsModule, ControlErrorComponent],
   templateUrl: './checkbox-input.component.html',
   styleUrl: './checkbox-input.component.scss'
 })
