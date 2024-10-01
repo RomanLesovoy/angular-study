@@ -41,11 +41,7 @@ export class InputShared implements OnInit {
   @Input() formGroup?: FormGroup;
   @Output() onChangeEvent = new EventEmitter<FieldValue>();
 
-  public control!: FormControl;
-
-  constructor() {
-    this.control = new FormControl(this.name, []);
-  }
+  public control: FormControl = new FormControl(this.name, []);
 
   get value(): FieldValue {
     return this.control.value;
