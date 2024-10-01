@@ -1,0 +1,13 @@
+<p-fieldset [legend]="label">
+
+  <input
+    pInputText
+    [value]="value"
+    [type]="type"
+    class="form-control"
+    [formControl]="control"
+    [attr.placeholder]="label"
+  />
+  
+  <app-control-error [control]="control"></app-control-error>
+</p-fieldset>
