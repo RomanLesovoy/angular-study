@@ -3,4 +3,5 @@ export interface Recipe {
   author: string,
   recipe: string,
   date: Date,
+  name: string,
 }

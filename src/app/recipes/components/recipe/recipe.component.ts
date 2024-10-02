@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { RecipesService } from '../../services/recipes.service';
 import { Recipe } from '../../types.recipes';
 
 @Component({
@@ -8,4 +9,8 @@ import { Recipe } from '../../types.recipes';
 })
 export class RecipeComponent {
   @Input() recipe!: Recipe;
+
+  constructor (public recipesService: RecipesService) {
+
+  }
 }

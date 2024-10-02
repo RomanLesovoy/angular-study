@@ -1,15 +1,42 @@
 import { Injectable } from '@angular/core';
 import { Recipe } from '../types.recipes';
 import { BehaviorSubject } from 'rxjs';
+import { Validators } from '@angular/forms';
 import { DatabaseService } from '../../shared/services/database.service';
+import { IInputProps, InputType } from '../../shared/Input.shared';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RecipesService {
-  public recipes: BehaviorSubject<Recipe[]> = new BehaviorSubject([] as Recipe[]);
-  public isLoading: BehaviorSubject<boolean> = new BehaviorSubject(false);
   private recipesDbKey = 'recipes';
+  public recipes: BehaviorSubject<Recipe[]> = new BehaviorSubject([] as Recipe[]);
+  public recipesError: BehaviorSubject<string> = new BehaviorSubject('');
+  public isLoading: BehaviorSubject<boolean> = new BehaviorSubject(false);
+
+  public recipesForm: Array<IInputProps> = [
+    {
+      name: 'name',
+      label: 'Type Name',
+      onChange: () => {},
+      type: InputType.Text,
+      validations: [Validators.minLength(3), Validators.required],
+    },
+    {
+      name: 'author',
+      label: 'Type Author',
+      onChange: () => {},
+      type: InputType.Text,
+      validations: [Validators.minLength(3), Validators.required],
+    },
+    {
+      name: 'recipe',
+      label: 'Type Recipe',
+      onChange: () => {},
+      type: InputType.TextArea,
+      validations: [Validators.minLength(50), Validators.required],
+    },
+  ];
 
   constructor(private database: DatabaseService) {
     this.getFromDb();
@@ -25,22 +52,19 @@ export class RecipesService {
     this.updateOnDb(updatedArray);
   }
 
-  editRecipe(recipe: Recipe) {
-    const recipeIndex = this.recipes.getValue().findIndex((r) => r.id === recipe.id);
-    const updatedArray = [...this.recipes.getValue()];
-    updatedArray[recipeIndex] = recipe;
-
-    this.updateOnDb(updatedArray);
-  }
-
-  async getFromDb() {
+  async getFromDb(search?: string) {
     this.isLoading.next(true);
+    const searchLowerCase = (search || '').toLowerCase();
 
     try {
       const result = await this.database.get<Recipe[]>(this.recipesDbKey);
-      this.recipes.next(result || [])
+      const resultWithSearch = search
+        ? result.filter(r => [r.author, r.name, r.recipe].some((r) => r.toLowerCase().indexOf(searchLowerCase) !== -1))
+        : result;
+
+      this.recipes.next(resultWithSearch || []);
     } catch (e) {
-      console.log(e)
+      this.recipesError.next(e as string);
       throw new Error(e as string);
     } finally {
       this.isLoading.next(false);
@@ -53,6 +77,7 @@ export class RecipesService {
       const result = await this.database.execute<Recipe[]>(this.recipesDbKey, updatedArray);
       this.recipes.next(result);
     } catch (e) {
+      this.recipesError.next(e as string);
       throw new Error(e as string);
     } finally {
       this.isLoading.next(false);

@@ -1,0 +1,11 @@
+<section *ngIf="control.invalid && control.touched" class="control-error">
+  <small *ngIf="control.errors?.['required']">
+   Required field
+  </small>
+  <small *ngIf="control.errors?.['minlength']">
+    Min length {{ control.errors?.['minlength'].requiredLength }}
+   </small>
+   <small *ngIf="control.errors?.['maxlength']">
+    Max length {{ control.errors?.['maxlength'].requiredLength }}
+   </small>
+</section>

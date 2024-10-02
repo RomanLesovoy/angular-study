@@ -8,7 +8,6 @@ import { RecipesModule } from './recipes/recipes.module';
   standalone: true,
   imports: [CommonModule, RouterOutlet, RecipesModule],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
 })
 export class AppComponent {
   title = 'Recipes';

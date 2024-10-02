@@ -10,7 +10,7 @@ export class DatabaseService {
   get<T>(key: string): Promise<T> {
     return new Promise((res, rej) => {
       const waitTime = Math.random() * 3000;
-      const shouldThrowError = Math.random() < 0.1;
+      const shouldThrowError = Math.random() < 0.1; // Error posibility
 
       setTimeout(() => {
         if (shouldThrowError) {
@@ -31,7 +31,7 @@ export class DatabaseService {
   execute<T>(key: string, body: T): Promise<T> {
     return new Promise((res, rej) => {
       const waitTime = Math.random() * 3000;
-      const shouldThrowError = Math.random() < 0.1;
+      const shouldThrowError = Math.random() < 0.1; // Error posibility
 
       setTimeout(() => {
         if (shouldThrowError) {

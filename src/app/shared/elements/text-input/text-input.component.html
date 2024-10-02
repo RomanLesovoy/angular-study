@@ -1,0 +1,25 @@
+
+  
+  <input
+    pInputText
+    *ngIf="type === enumType.Text"
+    [value]="value"
+    [type]="type"
+    class="form-control"
+    [formControl]="control"
+    [attr.placeholder]="label"
+    (change)="this.onChangeHandler($event)"
+  />
+
+  <textarea
+    pInputText
+    *ngIf="type === enumType.TextArea"
+    [value]="value"
+    class="form-control"
+    [formControl]="control"
+    [attr.placeholder]="label"
+    (change)="this.onChangeHandler($event)"
+  ></textarea>
+  
+  <app-control-error [control]="control"></app-control-error>
+

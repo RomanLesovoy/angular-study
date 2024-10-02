@@ -1,5 +1,7 @@
-<fieldset>
-  <h3>Author: {{ recipe.author }}</h3>
-  <span>Date: {{ recipe.date }}</span>
-  <p>Recipe: {{ recipe.recipe }}</p>
-</fieldset>
+<p-panel [header]="recipe.name" [toggleable]="true" [style]="{ marginBottom: '15px' }" [collapsed]="true">
+  <span>{{ recipe.author }}</span><br/>
+  <small>{{ recipe.date.toString().substring(0, 10) }}</small>
+  <p>{{ recipe.recipe }}</p>
+
+  <p-button label="Delete" severity="danger" (onClick)="this.recipesService.deleteRecipe(recipe)" />
+</p-panel>

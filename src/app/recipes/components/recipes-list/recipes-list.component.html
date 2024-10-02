@@ -1,3 +1,12 @@
+
+<app-form-builder header="Create Recipe" (onSubmit)="this.onSubmit($event)" [elements]="this.recipesService.recipesForm"></app-form-builder>
+
+<p-messages *ngIf="this.messages.length" [(value)]="this.messages" [enableService]="false" />
+
+<app-recipes-filters></app-recipes-filters>
+
 @for (recipe of recipes; track recipe.id) {
   <app-recipe [recipe]="recipe"></app-recipe>
 }
+
+<p-progressSpinner *ngIf="this.isLoading" ariaLabel="loading" class="recipes-loader" />
