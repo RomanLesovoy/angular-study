@@ -57,7 +57,7 @@ export class RecipesService {
     const searchLowerCase = (search || '').toLowerCase();
 
     try {
-      const result = await this.database.get<Recipe[]>(this.recipesDbKey);
+      const result = (await this.database.get<Recipe[]>(this.recipesDbKey)).filter((r) => !!r && !!r.name);
       const resultWithSearch = search
         ? result.filter(r => [r.author, r.name, r.recipe].some((r) => r.toLowerCase().indexOf(searchLowerCase) !== -1))
         : result;
@@ -74,7 +74,7 @@ export class RecipesService {
   async updateOnDb(updatedArray: Recipe[]) {
     this.isLoading.next(true);
     try {
-      const result = await this.database.execute<Recipe[]>(this.recipesDbKey, updatedArray);
+      const result = await this.database.execute<Recipe[]>(this.recipesDbKey, updatedArray.filter((r) => !!r && !!r.name));
       this.recipes.next(result);
     } catch (e) {
       this.recipesError.next(e as string);

@@ -52,7 +52,7 @@
       <p-divider />
     }
     
-    <button (click)="onSubmitFn()" pButton>Submit</button>
+    <button (click)="onSubmitFn()" [disabled]="form.invalid" pButton>Submit</button>
   </form>
 </p-card>
 
