@@ -1,0 +1,13 @@
+@for(product of this.products; track product.name) {
+  <section class="product-field">
+    <app-product [product]="product"></app-product>
+    <button (click)="this.productsService.addToBasket(product)">add</button>
+
+    <div class="qty-actions" *ngIf="!!this.productsService.checkExistsInBasket(product)">
+      <button (click)="this.productsService.changeQty(product, 1)">+</button>
+      <button (click)="this.productsService.changeQty(product, -1)">-</button>
+    </div>
+  </section>
+}
+
+<app-basket></app-basket>
