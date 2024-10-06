@@ -1,44 +1,36 @@
 import { Injectable } from '@angular/core';
 import { Product } from '../interfaces';
+import { DatabaseService } from '../../shared/database.service';
+import { BehaviorSubject, delay, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductsService {
-  products: Product[] = [
-    { name: 'Хліб', price: 10, qty: 1 },
-    { name: 'Яйця', price: 30, qty: 1 },
-    { name: 'Сир', price: 45, qty: 1 },
-    { name: 'Курка', price: 72, qty: 1 },
-    { name: 'Рис', price: 20, qty: 1 },
-    { name: 'Паста', price: 13, qty: 1 }
-  ];
+  public products: BehaviorSubject<Product[]> = new BehaviorSubject([]) as unknown as BehaviorSubject<Product[]>;
+  public productsObservable: Observable<Product>;
+  public isLoading: BehaviorSubject<boolean> = new BehaviorSubject(true);
+  public error: BehaviorSubject<string> = new BehaviorSubject('');
+  private storageKey: string = 'products-storage';
 
-  basket: Product[] = [];
-  fullPrice: number = 0;
+  constructor (private dbService: DatabaseService) {
+    this.getProductsFromDb();
+    const { observable, subject } = this.dbService.getObservable<Product>(this.storageKey);
+    this.productsObservable = observable;
 
-  checkExistsInBasket(product: Product) {
-    return this.basket.find((p) => p.name === product.name);
+    const newProduct: Product = { category: 'laptop', description: '', id: '005', inStock: 1, name: 'Lenovo', price: 1000, rating: 9.9 };
+    setTimeout(() => { subject.next(newProduct); subject.complete() }, 7000);
   }
 
-  addToBasket(product: Product) {
-    this.basket.push(product);
-    this.countPrice();
-  }
-
-  removeFromBasket(product: Product) {
-    this.basket = this.basket.filter((p) => p.name !== product.name);
-    this.countPrice();
-  }
-
-  changeQty(product: Product, value: 1 | -1) {
-    const productFound = this.checkExistsInBasket(product);
-    productFound && (productFound.qty += value);
-    this.countPrice();
-  }
-
-  countPrice() {
-    this.fullPrice = this.basket.reduce((acc, p) => acc + (p.price * p.qty), 0);
-    console.log(this.fullPrice)
+  async getProductsFromDb() {
+    this.isLoading.next(true);
+    try {
+      const products = await this.dbService.get<Product[]>(this.storageKey);
+      this.products.next(products);
+    } catch (e) {
+      this.error.next(e as string);
+    } finally {
+      this.isLoading.next(false);
+    }
   }
 }

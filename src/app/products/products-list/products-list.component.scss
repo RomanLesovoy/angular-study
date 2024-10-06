@@ -1,3 +1,16 @@
-.product-field {
-  margin-bottom: 20px;
+.product-row {
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.01);
+  }
+
+  &.active {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+}
+
+.sidenav {
+  padding: 15px;
+  min-width: 300px;
 }

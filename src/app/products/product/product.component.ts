@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Product } from '../interfaces';
+import { ProductRender } from '../interfaces';
 
 @Component({
   selector: 'app-product',
@@ -9,5 +9,5 @@ import { Product } from '../interfaces';
   styleUrl: './product.component.scss'
 })
 export class ProductComponent {
-  @Input() product!: Product;
+  @Input() product!: ProductRender;
 }
