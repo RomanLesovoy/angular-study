@@ -1,0 +1,9 @@
+<app-dialog-modal [openedProp]="true" [titleProp]="'Major data'">
+  <div [ngxLoaderIndicator]="this.isLoading">
+    <section *ngIf="!this.isLoading">
+      @for(data of this.allData; track data.text) {
+        <p>{{ data.text }}</p>
+      }
+    </section> 
+  </div> 
+</app-dialog-modal>

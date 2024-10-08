@@ -1,13 +1,13 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { DialogModalComponent } from './shared/dialog-modal/dialog-modal.component';
 import { BodyGalaxyBgComponent } from "./body-galaxy-bg/body-galaxy-bg.component";
+import { ModalDataComponent } from './shared/modal-data/modal-data.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, DialogModalComponent, BodyGalaxyBgComponent],
+  imports: [CommonModule, RouterOutlet, ModalDataComponent, BodyGalaxyBgComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
   encapsulation: ViewEncapsulation.None,
