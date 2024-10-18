@@ -1,0 +1,24 @@
+.product-image {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+.discounted {
+  text-decoration: line-through;
+  color: #999;
+}
+
+.discount {
+  color: #f44336;
+  font-weight: bold;
+}
+
+.mat-column-actions {
+  width: 80px;
+}
+
+.mat-chip-list {
+  display: inline-block;
+}
