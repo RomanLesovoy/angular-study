@@ -1,35 +1,39 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
-import { MatTableModule } from '@angular/material/table';
-import { MatChipsModule } from '@angular/material/chips';
-import { MatMenuModule } from '@angular/material/menu';
-import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
-import { MatTooltipModule } from '@angular/material/tooltip';
-
+import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { ProductTableComponent } from './product-table/product-table.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatMenuModule } from '@angular/material/menu';
 import { routes } from './app.routes';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProductTableComponent
+    ProductTableComponent,
   ],
   imports: [
+    RouterModule.forRoot(routes),
     CommonModule,
     BrowserModule,
     BrowserAnimationsModule,
-    RouterModule.forRoot(routes),
     MatTableModule,
     MatChipsModule,
     MatMenuModule,
     MatIconModule,
     MatButtonModule,
-    MatTooltipModule
+    MatIconModule,
+    MatDialogModule,
+    MatSnackBarModule,
+    SidebarComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]

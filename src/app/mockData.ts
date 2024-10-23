@@ -1,4 +1,5 @@
 export interface Product {
+  id: number;
   image: string;
   name: string;
   discount: number;
@@ -13,7 +14,8 @@ export interface Product {
 }
 
 export const products: Product[] = [
-  {
+    {
+      id: 1,
       image: 'https://via.placeholder.com/150',
       name: 'Product 1',
       discount: 10,
@@ -27,6 +29,7 @@ export const products: Product[] = [
       tags: ['electronics', 'new', 'sale']
   },
   {
+      id: 2,
       image: 'https://via.placeholder.com/150',
       name: 'Product 2',
       discount: 5,
@@ -40,6 +43,7 @@ export const products: Product[] = [
       tags: ['furniture', 'popular']
   },
   {
+      id: 3,
       image: 'https://via.placeholder.com/150',
       name: 'Product 3',
       discount: 15,
@@ -53,6 +57,7 @@ export const products: Product[] = [
       tags: ['clothing', 'discount']
   },
   {
+      id: 4,
       image: 'https://via.placeholder.com/150',
       name: 'Product 4',
       discount: 0,
@@ -66,6 +71,7 @@ export const products: Product[] = [
       tags: ['sports', 'new']
   },
   {
+      id: 5,
       image: 'https://via.placeholder.com/150',
       name: 'Product 5',
       discount: 25,
@@ -79,6 +85,7 @@ export const products: Product[] = [
       tags: ['outdoor', 'clearance']
   },
   {
+      id: 6,
       image: 'https://via.placeholder.com/150',
       name: 'Product 6',
       discount: 10,
@@ -92,6 +99,7 @@ export const products: Product[] = [
       tags: ['kitchen', 'best-seller']
   },
   {
+      id: 7,
       image: 'https://via.placeholder.com/150',
       name: 'Product 7',
       discount: 30,
@@ -105,6 +113,7 @@ export const products: Product[] = [
       tags: ['beauty', 'gift']
   },
   {
+      id: 8,
       image: 'https://via.placeholder.com/150',
       name: 'Product 8',
       discount: 12,
@@ -118,6 +127,7 @@ export const products: Product[] = [
       tags: ['clothing', 'eco-friendly']
   },
   {
+      id: 9,
       image: 'https://via.placeholder.com/150',
       name: 'Product 9',
       discount: 0,
@@ -131,6 +141,7 @@ export const products: Product[] = [
       tags: ['luxury', 'premium']
   },
   {
+      id: 10,
       image: 'https://via.placeholder.com/150',
       name: 'Product 10',
       discount: 20,
@@ -144,6 +155,7 @@ export const products: Product[] = [
       tags: ['tech', 'sale']
   },
   {
+      id: 11,
       image: 'https://via.placeholder.com/150',
       name: 'Product 11',
       discount: 18,
@@ -157,6 +169,7 @@ export const products: Product[] = [
       tags: ['home', 'popular']
   },
   {
+      id: 12,
       image: 'https://via.placeholder.com/150',
       name: 'Product 12',
       discount: 35,
@@ -170,6 +183,7 @@ export const products: Product[] = [
       tags: ['fashion', 'limited']
   },
   {
+      id: 13,
       image: 'https://via.placeholder.com/150',
       name: 'Product 13',
       discount: 0,
@@ -183,6 +197,7 @@ export const products: Product[] = [
       tags: ['gadgets', 'new']
   },
   {
+      id: 14,
       image: 'https://via.placeholder.com/150',
       name: 'Product 14',
       discount: 8,
@@ -196,6 +211,7 @@ export const products: Product[] = [
       tags: ['sports', 'sale']
   },
   {
+      id: 15,
       image: 'https://via.placeholder.com/150',
       name: 'Product 15',
       discount: 22,
